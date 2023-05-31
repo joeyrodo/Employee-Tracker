@@ -25,18 +25,19 @@ const db = mysql.createConnection(
   );
 
 
-// Query database
-db.query('SELECT * FROM department', function (err, results) {
-  console.log(results);
-});
+// // Query database
+// db.query('SELECT * from department;', function (err, results) {
+//   console.log(results);
+// });
 
-db.query('SELECT * FROM role', function (err, results) {
-  console.log(results);
-});
+// db.query('SELECT * from role;', function (err, results) {
+//   console.log(results);
+// });
 
-db.query('SELECT * FROM employee', function (err, results) {
-  console.log(results);
-});
+// db.query('SELECT * from employee;', function (err, results) {
+//   console.log("employee results")
+//   console.log(results);
+// });
 
 // Default response for any other request (Not Found)
 app.use((req, res) => {
@@ -51,12 +52,13 @@ app.listen(PORT, () => {
 
 
 
-let questions = [
+let mainPrompt = [
   {
       // TEXT QUESTION
-      type: 'input',
-      name: 'text',
-      message: 'sample question '
+      type: 'list',
+      name: 'mainPrompt',
+      choices: ['View all departments', 'View all roles', 'View all employees', 'Add a department', 'Add a role', 'Add an employee', 'Update an employee role'],
+      message: 'Select an option: '
   },
  
 ]
@@ -64,9 +66,43 @@ let questions = [
 startQuestions();
 
 function startQuestions() {
-  inquirer.prompt(questions)
+  inquirer.prompt(mainPrompt)
       .then(answers => {
-          console.log("answers:" + answers)
+          answers.mainPrompt == 'View all departments' ? viewDepartments()
+            : answers.mainPrompt == 'View all roles' ? viewRoles()
+            : answers.mainPrompt == 'View all employees' ? viewEmployees()
+            : answers.mainPrompt == 'Add a department' ? addDepartment()
+            : answers.mainPrompt == 'Add a role' ? addRole()
+            : answers.mainPrompt == 'Add an employee' ? addEmployee()
+            : answers.mainPrompt == 'Update an employee role' ? updateEmployeeRole()
+            : console.log("Uh oh, something went wrong")
       })
 }
 
+function viewDepartments() {
+  console.log("viewing departments...");
+}
+
+function viewRoles() {
+  console.log("viewing roles...");
+}
+
+function viewEmployees() {
+  console.log("viewing employees...");
+}
+
+function addDepartment() {
+  console.log("adding a department...");
+}
+
+function addRole() {
+  console.log("adding a role...");
+}
+
+function addEmployee() {
+  console.log("adding an employee...");
+}
+
+function updateEmployeeRole() {
+  console.log("updating an employee role...");
+}
