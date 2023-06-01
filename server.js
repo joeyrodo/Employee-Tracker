@@ -81,14 +81,29 @@ function startQuestions() {
 
 function viewDepartments() {
   console.log("viewing departments...");
+  db.query('SELECT name FROM department', function (err, results) {
+  console.table(results);
+  });
 }
 
 function viewRoles() {
   console.log("viewing roles...");
+  db.query("SELECT role.title, role.id, department.name, role.salary from role join department on role.department_id = department.id", function (err, results) {
+  console.table(results);
+  });
 }
 
 function viewEmployees() {
   console.log("viewing employees...");
+  const query = `
+  SELECT employee.id, employee.first_name, employee.last_name, role.title, role.salary, department.id FROM employee
+  JOIN role on employee.role_id = role.id
+  JOIN department on employee.role_id = department.id
+  `;
+  db.query(query, (err, res) => {
+      if (err) throw err;
+      console.table(res);
+  });
 }
 
 function addDepartment() {

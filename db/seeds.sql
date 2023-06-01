@@ -13,8 +13,8 @@ VALUES
 
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
 VALUES 
-        ("first1", "last1", 1, null),
+        ("silly", "last1", 1, null),
         ("first2", "last2", 2, 1),
         ("first3", "last3", 3, 1),
         ("first4", "last4", 4, 2),
-        ("first5", "last5", 5, 2);
+        ("first5", "last5", 5, 1);
