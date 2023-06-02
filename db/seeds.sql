@@ -14,8 +14,8 @@ VALUES
 
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
 VALUES 
-        ("Squidward`", "Tentacles", 1, 3),
-        ("Sheldon", "Plankton", 2, null),
-        ("Eugene", "Krabs", 3, null),
+        ("Squidward", "Tentacles", 1, 3),
+        ("Sheldon", "Plankton", 2, 2),
+        ("Eugene", "Krabs", 3, 3),
         ("Gary", "Snail", 4, 5),
         ("Spongebob", "Squarepants", 5, 3);
